@@ -1,7 +1,7 @@
-@Login
+@XDI-8 @Login
 Feature: Login en la página de SauceDemo
 
-  @TEST_P001-41
+  @TEST_XDI-2
   Scenario: Inicio de sesión exitoso
 
     Given que el Cliente se encuentra en la página SauceDemo
@@ -9,7 +9,8 @@ Feature: Login en la página de SauceDemo
     Then el login es satisfactorio
 
 
-  @Unhappy
+
+  @TEST_XDI-5
   Scenario: Inicio de sesión con usuario bloqueado
 
     Given que el Cliente se encuentra en la página SauceDemo

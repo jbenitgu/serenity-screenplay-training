@@ -5,8 +5,11 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.actions.Upload;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Step;
+import pe.interbank.openbanking.actions.mainframe.PrintConsoleScreen;
+import pe.interbank.openbanking.actions.mainframe.WriteEmulator;
 import pe.interbank.openbanking.userinterfaces.LoginPage;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
@@ -34,6 +37,11 @@ public class Login implements Task {
                 Enter.theValue(user).into(LoginPage.USERNAME_INPUT),
                 Enter.theValue(password).into(LoginPage.PASSWORD_INPUT),
                 Click.on(LoginPage.LOGIN_BUTTON)
+        );
+
+        actor.attemptsTo(
+                new PrintConsoleScreen(),
+                WriteEmulator.theValue("")
         );
 
     }

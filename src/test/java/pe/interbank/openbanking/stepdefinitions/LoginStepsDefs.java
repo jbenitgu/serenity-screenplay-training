@@ -5,6 +5,7 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
@@ -35,14 +36,20 @@ public class LoginStepsDefs {
 
     @Given("^que el (.*) se encuentra en la página SauceDemo$")
     public void queElClienteSeEncuentraEnLaPáginaSauceDemo(String actor) {
+        BrowseTheWeb.as(theActorInTheSpotlight()).getDriver().close();
         theActorCalled(actor).attemptsTo(
                 NavigateTo.sauceDemoPage()
         );
+//        theActorInTheSpotlight().whoCan(
+//                BrowseTheWeb.with("")
+//        );
         screenShot();
+        theActorInTheSpotlight().attemptsTo();
     }
 
     @When("inicia sesión con las credenciales: {string}, {string}")
     public void iniciaSesiónConLasCredenciales(String user, String password) {
+        screenShot();
         theActorInTheSpotlight().attemptsTo(
                 Login.withCredentials(user, password)
         );
@@ -58,6 +65,8 @@ public class LoginStepsDefs {
     }
 
     public void screenShot(){
+        String response = SerenityRest.lastResponse().body().toString();
+        this.scenario.attach(response, "text", "evidencias");
         byte[] evidencia = ((TakesScreenshot) BrowseTheWeb.as(theActorInTheSpotlight()).getDriver()).getScreenshotAs(OutputType.BYTES);
         this.scenario.attach(evidencia, "image/png", "evidencias");
     }
@@ -67,5 +76,6 @@ public class LoginStepsDefs {
         theActorInTheSpotlight().should(
                 seeThat("El mensaje de error", LoginQuestion.errorMessage(), equalTo(message))
         );
+        screenShot();
     }
 }

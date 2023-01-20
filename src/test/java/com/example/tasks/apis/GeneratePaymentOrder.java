@@ -5,7 +5,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.rest.interactions.Post;
-import pe.interbank.openbanking.models.*;
 import com.example.utils.WebServiceEndpoints;
 
 import java.sql.Timestamp;

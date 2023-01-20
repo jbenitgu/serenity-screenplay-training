@@ -9,8 +9,7 @@ parameters:
   - name: tags
     type: string
     displayName: Tags a ejecutar
-    values:
-      - '@Login'
+    values: [ string ]
   - name: env
     type: string
     displayName: Ambiente a ejecutar

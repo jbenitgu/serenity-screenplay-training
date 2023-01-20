@@ -19,7 +19,7 @@ parameters:
 
 variables:
   - name: vmImage
-    value: 'ubuntu-latest'
+    value: 'windows-latest'
     readonly: true
 
 stages:

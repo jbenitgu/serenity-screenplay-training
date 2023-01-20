@@ -9,7 +9,6 @@ parameters:
   - name: tags
     type: string
     displayName: Tags a ejecutar
-    values: [ string ]
   - name: env
     type: string
     displayName: Ambiente a ejecutar

@@ -32,6 +32,10 @@ stages:
         steps:
           - script: |
               cd serenity-screenplay-training
+              mvn clean install
+            displayName: 'Build'  
+          - script: |
+              cd serenity-screenplay-training
               mvn clean verify "-Dcucumber.filter.tags=${{ parameters.tags }}"
             displayName: 'Ejecución de pruebas automatizadas'
           - script: |

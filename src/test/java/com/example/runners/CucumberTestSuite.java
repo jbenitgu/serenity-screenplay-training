@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 @CucumberOptions(
         plugin = {"json:target/build/cucumber.json"},
         features = {"src/test/resources/features"},
-        glue = "pe.interbank.openbanking.stepdefinitions",
+        glue = "com.example.stepdefinitions",
         tags = "@mobile"
 )
 public class CucumberTestSuite {

@@ -30,7 +30,7 @@ stages:
         pool:
           vmImage: $(vmImage)
         steps:
-          - checkout: git://training-azuredevops/serenity-screenplay-training
+          - checkout: git://AzureDevOpsTraining/serenity-screenplay-training
           - script: |
               cd serenity-screenplay-training
               mvn clean verify "-Dcucumber.filter.tags=${{ parameters.tags }}"

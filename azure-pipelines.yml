@@ -46,7 +46,7 @@ stages:
             inputs:
               targetPath: 'D:/a/1/s/target/site/serenity/'
               artifactName: 'ReporteSerenity'
-              artifactType: 'FilePath'
+              publishContainer: 'Container'
             displayName: 'Publish report'
           - task: PublishTestResults@2
             condition: always()

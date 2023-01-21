@@ -46,13 +46,13 @@ stages:
               mvn serenity:aggregate
             condition: always()
             displayName: 'Generate Serenity Report'
-          - task: PublishBuildArtifacts@1
-            condition: always()
-            inputs:
-              targetPath: './target/site/serenity/'
-              artifactName: 'ReporteSerenity'
-              artifactType: 'FilePath'
-            displayName: 'Publish report'
+#          - task: PublishBuildArtifacts@1
+#            condition: always()
+#            inputs:
+#              targetPath: './target/site/serenity/'
+#              artifactName: 'ReporteSerenity'
+#              artifactType: 'FilePath'
+#            displayName: 'Publish report'
           - task: PublishBuildArtifacts@1
             condition: always()
             inputs:

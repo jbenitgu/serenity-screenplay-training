@@ -53,6 +53,13 @@ stages:
               artifactName: 'ReporteSerenity'
               artifactType: 'FilePath'
             displayName: 'Publish report'
+          - task: PublishBuildArtifacts@1
+            condition: always()
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'SerenityReport'
+              publishLocation: 'Container'
+            displayName: 'Publish report'
           - task: PublishTestResults@2
             condition: always()
             inputs:

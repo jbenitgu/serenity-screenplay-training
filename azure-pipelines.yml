@@ -42,6 +42,7 @@ stages:
               mvn clean verify "-Dcucumber.filter.tags=${{ parameters.tags }}"
             displayName: 'Execute tests'
           - task: PublishPipelineArtifact@1
+            condition: always()
             inputs:
               targetPath: '$(Pipeline.Workspace)/s/target/site/serenity'
               artifact: 'SerenityReport'

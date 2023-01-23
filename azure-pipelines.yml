@@ -43,7 +43,7 @@ stages:
             displayName: 'Execute tests'
           - task: PublishPipelineArtifact@1
             inputs:
-              targetPath: '$(Pipeline.Workspace)/target/site/serenity'
+              targetPath: '$(Pipeline.Workspace)/s/target/site/serenity'
               artifact: 'SerenityReport'
               publishLocation: 'pipeline'
             displayName: 'Publish report'

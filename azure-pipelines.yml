@@ -21,10 +21,10 @@ variables:
     readonly: true
 
 stages:
-  - stage: Ejecucion_Pruebas
-    displayName: Ejecución de pruebas automatizadas
+  - stage: Execute_Tests
+    displayName: Execute automated tests
     jobs:
-      - job: Construccion_ejecucion
+      - job: Job
         pool:
           vmImage: $(vmImage)
         steps:
@@ -41,19 +41,12 @@ stages:
               cd serenity-screenplay-training
               mvn clean verify "-Dcucumber.filter.tags=${{ parameters.tags }}"
             displayName: 'Execute tests'
-          #- task: PublishBuildArtifacts@1
-          #  condition: always()
-          #  inputs:
-          #    targetPath: 'D:/a/1/s/target/site/serenity/'
-          #    artifactName: 'ReporteSerenity'
-          #    publishContainer: 'Container'
-          #  displayName: 'Publish report'
           - task: PublishPipelineArtifact@1
             inputs:
-              targetPath: '$(Pipeline.Workspace)'
+              targetPath: '$(Pipeline.Workspace)/target/site/serenity'
               artifact: 'SerenityReport'
               publishLocation: 'pipeline'
-            displayName: 'Publush report'
+            displayName: 'Publish report'
           - task: PublishTestResults@2
             condition: always()
             inputs:

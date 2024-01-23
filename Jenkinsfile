@@ -10,7 +10,7 @@ pipeline {
             steps{
                 script{
                     try{
-                      //  withMaven(maven: 'maven3.8.5'){
+                        withMaven(maven: 'maven'){
                             if(isUnix()){
                                echo "Ejecutando tag: $params.SCENARIO_TAG"
                                sh "java -version"

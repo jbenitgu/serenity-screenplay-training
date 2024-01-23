@@ -10,7 +10,7 @@ pipeline {
             steps{
                 script{
                     try{
-                        withMaven(maven: 'maven'){
+                       // withMaven(maven: 'maven'){
                             if(isUnix()){
                                echo "Ejecutando tag: $params.SCENARIO_TAG"
                                sh "java -version"
@@ -21,7 +21,7 @@ pipeline {
                                 bat "java -version"
                                 bat 'mvn clean verify -Dcucumber.filter.tags="@%SCENARIO_TAG%"'
                              }
-                        }
+                       // }
 
                     } finally{
                           publishReport();

@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    tools {
+          maven 'MAVEN_HOME'
+          jdk 'JAVA_HOME'
+    }
     parameters {
         choice(name: 'AGENT_NODE', choices: ['any'], description: 'Seleccionar NODO')
         choice(name: 'ENV', choices: ['dev', 'uat'], description: 'Selecionar ambiente')

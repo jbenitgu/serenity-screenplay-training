@@ -21,7 +21,7 @@ pipeline {
                                 bat "java -version"
                                 bat 'mvn clean verify -Dcucumber.filter.tags="@%SCENARIO_TAG%"'
                              }
-                        }
+
 
                     } finally{
                           publishReport();

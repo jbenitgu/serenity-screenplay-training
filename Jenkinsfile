@@ -18,7 +18,7 @@ pipeline {
                             if(isUnix()){
                                echo "Ejecutando tag: ${params.SCENARIO_TAG}"
                                sh "java -version"
-                               sh 'mvn clean verify -Dcucumber.filter.tags="@${params.SCENARIO_TAG}"'
+                               sh 'mvn clean verify -Dcucumber.filter.tags="${params.SCENARIO_TAG}"'
                             }
                              else{
                                 echo "Ejecutando tag: $params.SCENARIO_TAG"

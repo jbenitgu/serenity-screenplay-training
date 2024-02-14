@@ -30,6 +30,9 @@ pipeline {
                         if(isUnix()){
                             echo "Executing tag: ${params.SCENARIO_TAG}"
                             sh 'mvn clean verify -Dcucumber.filter.tags="${SCENARIO_TAG}"'
+                            def htmlFileName = sh(script: 'ls target/site/serenity/index.html | head -n 1 | xargs -n 1 basename', returnStdout: true).trim()
+                            env.HTML_FILE_NAME = htmlFileName
+                            echo env.HTML_FILE_NAME
                         }
                         else {
                             echo "Executing tag: ${params.SCENARIO_TAG}"
@@ -48,7 +51,7 @@ pipeline {
         publishHTML(target: [
             reportName: 'Serenity Report',
             reportDir: 'target/site/serenity',
-            reportFiles: 'index.html',
+            reportFiles: env.HTML_FILE_NAME,
             keepAll: true,
             alwaysLinkToLastBuild: true,
             allowMissing: false

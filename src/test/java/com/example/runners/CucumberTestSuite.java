@@ -13,8 +13,8 @@ import java.util.logging.Logger;
 @CucumberOptions(
         plugin = {"json:target/build/cucumber.json"},
         features = {"src/test/resources/features"},
-        glue = "com.example.stepdefinitions",
-        tags = "@Login"
+        glue = {"com.example.stepdefinitions", "com.example.hooks"},
+        tags = "@TiendaMascota"
 )
 public class CucumberTestSuite {
 
@@ -22,6 +22,7 @@ public class CucumberTestSuite {
     public static void beforeAll(){
         Logger.getLogger(CucumberTestSuite.class.getName()).info("Before all execution >>>");
     }
+
 
 //    @AfterClass
 //    public static void afterAll(){

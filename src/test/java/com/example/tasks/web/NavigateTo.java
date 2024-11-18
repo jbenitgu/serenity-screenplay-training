@@ -10,7 +10,7 @@ import net.thucydides.core.util.EnvironmentVariables;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class NavigateTo implements Task {
-    EnvironmentVariables environmentVariables;
+
 
     private final String url;
 
@@ -23,13 +23,13 @@ public class NavigateTo implements Task {
     @Step("{0} Inicia la página #url")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Open.url(EnvironmentSpecificConfiguration.from(environmentVariables).getProperty(url))
+                Open.url(this.url)
         );
     }
 
+
     public static Task sauceDemoPage(){
-        String url = "webdriver.base.url";
-        return instrumented(NavigateTo.class, url);
+        return instrumented(NavigateTo.class, "https://www.saucedemo.com/");
     }
 
 

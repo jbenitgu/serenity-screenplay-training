@@ -1,14 +1,19 @@
 package com.example.stepdefinitions.web;
 
+import com.example.tasks.web.GoToProduct;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.response.ValidatableResponse;
+import net.serenitybdd.rest.Ensure;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import net.serenitybdd.screenplay.rest.questions.LastResponse;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import com.example.questions.web.InventoryDisplayed;
@@ -21,8 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static net.serenitybdd.screenplay.actors.OnStage.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 public class LoginStepsDefs {
@@ -45,6 +49,7 @@ public class LoginStepsDefs {
         );
         screenShot();
     }
+
 
     @When("inicia sesión con las credenciales: {string}, {string}")
     public void iniciaSesiónConLasCredenciales(String user, String password) {
@@ -85,7 +90,15 @@ public class LoginStepsDefs {
         theActorInTheSpotlight().should(
                 seeThat("El mensaje de error", LoginQuestion.errorMessage(), equalTo(message))
         );
+
     }
 
+
+    @When("navegado al producto de ID {string}")
+    public void navegadoAlProductoDeID(String idProduct) {
+        theActorInTheSpotlight().attemptsTo(
+                GoToProduct.with(idProduct)
+        );
+    }
 
 }

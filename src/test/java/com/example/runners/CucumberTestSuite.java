@@ -14,7 +14,7 @@ import java.util.logging.Logger;
         plugin = {"json:target/build/cucumber.json"},
         features = {"src/test/resources/features"},
         glue = "com.example.stepdefinitions",
-        tags = "@Login"
+        tags = "@TEST_P001-41"
 )
 public class CucumberTestSuite {
 

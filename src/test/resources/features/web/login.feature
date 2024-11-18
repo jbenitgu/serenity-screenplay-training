@@ -7,6 +7,7 @@ Feature: Login en la página de SauceDemo
     Given que el Cliente se encuentra en la página SauceDemo
     When inicia sesión con las credenciales: "standard_user", "secret_sauce"
     Then el login es satisfactorio
+    When navegado al producto de ID "4"
 
 
 

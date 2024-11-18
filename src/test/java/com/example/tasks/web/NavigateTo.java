@@ -31,4 +31,6 @@ public class NavigateTo implements Task {
         String url = "webdriver.base.url";
         return instrumented(NavigateTo.class, url);
     }
+
+
 }
